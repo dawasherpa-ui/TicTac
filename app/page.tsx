@@ -1,5 +1,8 @@
 'use client'
 import React, { useState, useEffect } from "react";
+import Circle from '@/image/circle.png';
+import Cross from '@/image/cross.png';
+import Image from "next/image";
 function page() {
   const totalBlock: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const winningDigit: number[][] = [
@@ -22,11 +25,11 @@ function page() {
 
   useEffect(() => {
     if (checkWinner(player1)) {
-      alert("Nice Player1 won")
+      alert("Nice Player X won")
       setWinner(1);
       setPlayerWon1(playerWon1 + 1)
     } else if (checkWinner(player2)) {
-      alert("Nice...,Player2 won")
+      alert("Nice...,Player O won")
       setWinner(2);
       setPlayerWon2(playerWon2+ 1)
     }
@@ -94,18 +97,19 @@ function page() {
               handleClick(elem);
             }}
             style={{
-              backgroundColor:
-                player1.includes(elem) 
-                  ? "white"
-                  : player2.includes(elem) 
-                  ? "blue"
-                  : "black",
+              backgroundColor:"white",
             }}
-          ></div>
+          >
+           {   player1.includes(elem) 
+                  ? <Image src={Cross} alt="img" width={400} height={400} className="w-full h-full" />
+                  : player2.includes(elem) 
+                  ? <Image src={Circle} alt="img" width={400} height={400} className="w-full h-full" />
+                  : null}
+          </div>
         ))}
       </div>
       {winner && <div>Player {winner} wins!</div>}
-      <button onClick={handleReset}>Reset</button>
+      <button onClick={handleReset} className="text-xl border-[1px] border-black px-5 rounded-md hover:bg-slate-500 active:relative top-1">Again</button>
     </div>
       </div>
     </div>
