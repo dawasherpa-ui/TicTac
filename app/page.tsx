@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Circle from '@/image/circle.png';
 import Cross from '@/image/cross.png';
 import Image from "next/image";
-function page() {
+function Page() {
   const totalBlock: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const winningDigit: number[][] = [
     [1, 2, 3],
@@ -116,4 +116,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
